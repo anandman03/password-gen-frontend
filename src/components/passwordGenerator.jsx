@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { BeatLoader } from 'react-spinners';
 import CheckBox from './checkbox';
-
 import InputBox from './inputbox';
 
 export default function PasswordGenerator() {
   const [password, setPassword] = useState('');
   const [length, setLength] = useState('');
+  const [loading, setLoading] = useState(false);
   const [isUpperCase, setIsUpperCase] = useState(0);
   const [isNumeric, setIsNumeric] = useState(0);
   const [isSymbol, setIsSymbol] = useState(0);
@@ -27,6 +28,7 @@ export default function PasswordGenerator() {
   }
 
   function generatePassword() {
+    setLoading(true);
     fetch('https://password-gen-backend.herokuapp.com/password-gen/', {
       method: 'POST',
       headers: {
@@ -39,10 +41,13 @@ export default function PasswordGenerator() {
       return response.text().then(error => { throw new Error(error) });
     })
     .then(data => {
-      console.log(data.message);
       setPassword(data.message);
+      setLoading(false);
     })
-    .catch(error => alert(error.message))
+    .catch(error => {
+      alert(error.message);
+      setLoading(false);
+    })
   }
 
   return(
@@ -76,6 +81,7 @@ export default function PasswordGenerator() {
       <div className='display-screen'>
         {password}
       </div>
+      <BeatLoader css={'margin: 10px 0 0 0;'} loading={loading} />
     </div>
   );
 }
