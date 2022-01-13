@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/password-gen-frontend/static/css/main.83f5f467.css",
+    "main.js": "/password-gen-frontend/static/js/main.3c842965.js",
+    "index.html": "/password-gen-frontend/index.html",
+    "main.83f5f467.css.map": "/password-gen-frontend/static/css/main.83f5f467.css.map",
+    "main.3c842965.js.map": "/password-gen-frontend/static/js/main.3c842965.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83f5f467.css",
+    "static/js/main.3c842965.js"
+  ]
+}
