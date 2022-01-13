@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/password-gen-frontend/static/css/main.83f5f467.css",
-    "main.js": "/password-gen-frontend/static/js/main.3c842965.js",
+    "main.css": "/password-gen-frontend/static/css/main.5bd01194.css",
+    "main.js": "/password-gen-frontend/static/js/main.7e27f72d.js",
     "index.html": "/password-gen-frontend/index.html",
-    "main.83f5f467.css.map": "/password-gen-frontend/static/css/main.83f5f467.css.map",
-    "main.3c842965.js.map": "/password-gen-frontend/static/js/main.3c842965.js.map"
+    "main.5bd01194.css.map": "/password-gen-frontend/static/css/main.5bd01194.css.map",
+    "main.7e27f72d.js.map": "/password-gen-frontend/static/js/main.7e27f72d.js.map"
   },
   "entrypoints": [
-    "static/css/main.83f5f467.css",
-    "static/js/main.3c842965.js"
+    "static/css/main.5bd01194.css",
+    "static/js/main.7e27f72d.js"
   ]
 }
