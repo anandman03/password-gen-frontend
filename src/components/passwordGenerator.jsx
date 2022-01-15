@@ -11,43 +11,31 @@ export default function PasswordGenerator() {
   const [isNumeric, setIsNumeric] = useState(0);
   const [isSymbol, setIsSymbol] = useState(0);
 
-  function updateUpperCaseCheckbox() {
-    setIsUpperCase(1 - isUpperCase);
-  }
+  const updateUpperCaseCheckbox = () => setIsUpperCase(1 - isUpperCase);
+  const updateNumericCheckbox = () => setIsNumeric(1 - isNumeric);
+  const updateSymbolCheckbox = () => setIsSymbol(1 - isSymbol);
+  const updateLength = ({ target }) => setLength(Number(target.value));
 
-  function updateNumericCheckbox() {
-    setIsNumeric(1 - isNumeric);
-  }
-
-  function updateSymbolCheckbox() {
-    setIsSymbol(1 - isSymbol);
-  }
-
-  function updateLength(event) {
-    setLength(Number(event.target.value));
-  }
-
-  function generatePassword() {
+  async function generatePassword() {
     setLoading(true);
-    fetch('https://password-gen-backend.herokuapp.com/password-gen/', {
+    const requestParams = {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ length, isUpperCase, isNumeric, isSymbol }),
-    })
-    .then(response => {
-      if (response.ok) return response.json();
-      return response.text().then(error => { throw new Error(error) });
-    })
-    .then(data => {
+    };
+    const URL = 'https://password-gen-backend.herokuapp.com/password-gen/';
+    try {
+      const response = await fetch(URL, requestParams);
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
       setPassword(data.message);
-      setLoading(false);
-    })
-    .catch(error => {
-      alert(error.message);
-      setLoading(false);
-    })
+    }
+    catch(error) {
+      alert(error);
+    }
+    setLoading(false);
   }
 
   return(
